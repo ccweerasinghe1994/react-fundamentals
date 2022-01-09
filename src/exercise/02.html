@@ -1,29 +1,39 @@
 <!-- Intro to raw React APIs -->
 <!-- http://localhost:3000/isolated/exercise/02.html -->
 
-<body>
-  <div id="root"></div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- 🐨 add React and ReactDOM on the page.
-       💰 Here are script tags that'll do the job:
-  <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
-  <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
-  -->
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@17.0.0/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
+    <script type="module">
+      const rootElement = document.getElementById('root')
 
-  <script type="module">
-    const rootElement = document.getElementById('root')
+      const spanElement1 = React.createElement('span', {
+        children: 'hello',
+      })
+      const spanElement2 = React.createElement('span', {
+        children: ' world',
+      })
+      const elementProps = {
+        className: 'container',
+        children: [spanElement1, spanElement2],
+      }
+      const elementType = 'div'
 
-    // You're going to re-implement this code using React!
-    // 💣 So go ahead and delete this implementation (or comment it out for now)
-    // These three lines are similar to React.createElement
-    const element = document.createElement('div')
-    element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
-    element.className = 'container' // 💰 in React, this is also called the "className" prop
-    // This is similar to ReactDOM.render
-    rootElement.append(element)
+      const reactElement = React.createElement(elementType, elementProps)
+      ReactDOM.render(reactElement, document.getElementById('root'))
 
-    // 🐨 Please re-implement the regular document.createElement code above
-    // with these React API calls
-    // 💰 The example in the markdown file should be a good hint for you.
-  </script>
-</body>
+      // with these React API calls
+      // 💰 The example in the markdown file should be a good hint for you.
+    </script>
+  </body>
+</html>
